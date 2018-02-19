@@ -67,3 +67,8 @@ You can fork this repo to create your own boilerplate, and use it with `vue-cli`
 ``` bash
 vue init username/repo my-project
 ```
+
+# Reminder about android package naming conventions
+
+Use these [Naming conventions](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html) for reverse doamin name to prevent build failure.
+If you've already initialised your project this can be changed in `config.xml`.

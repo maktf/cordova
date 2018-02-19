@@ -14,6 +14,11 @@ module.exports = {
       "required": true,
       "message": "Project name"
     },
+    "reverseDomain": {
+      "type": "string",
+      "required": true,
+      "message": "Project reverse domain name (e.g. io.cordova.hellocordova)"
+    },
     "short_name": {
       "type": "string",
       "required": false,
@@ -93,5 +98,5 @@ module.exports = {
     "test/e2e/**/*": "e2e",
     "src/router/**/*": "router"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  cordova platform add android\n  npm run android\n\nDocumentation can be found at https://vuejs-templates.github.io/webpack"
 };

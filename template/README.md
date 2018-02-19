@@ -38,6 +38,10 @@ npm run cordova-build
 # build for production and serve the app through the browser - no hot reload.
 npm run browser
 
+# add respective platforms
+cordova platform add android
+cordova platform add ios
+
 # build for production and serve the app on an iOS device
 npm run ios
 

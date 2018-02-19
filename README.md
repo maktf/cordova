@@ -1,6 +1,6 @@
-# vue-pwa-boilerplate
+# vue-pwa-cordova-boilerplate
 
-> A full-featured [PWA](https://developers.google.com/web/progressive-web-apps/) template with webpack, hot-reload, lint-on-save, unit testing & css extraction.
+> A full-featured [PWA](https://developers.google.com/web/progressive-web-apps/) template with webpack, hot-reload, lint-on-save, unit testing & css extraction, that is wrapped in a cordova project.
 
 ## Documentation
 
@@ -14,10 +14,14 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init pwa my-project
+$ vue init vuetifyjs/cordova my-project
 $ cd my-project
 $ npm install
 $ npm run dev
+$ cordova platform add android
+$ cordova platform add ios
+$ npm run android
+$ npm run ios
 ```
 
 If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.

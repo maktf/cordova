@@ -13,7 +13,7 @@ selenium-debug.log
 {{/e2e}}
 
 # Editor directories and files
-.idea
+.idea/
 *.suo
 *.ntvs*
 *.njsproj

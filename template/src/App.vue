@@ -1,17 +1,18 @@
 <template>
   <v-app light>
     <v-navigation-drawer
-      persistent
+      fixed
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
-      enable-resize-watcher
+      app
     >
       <v-list>
         <v-list-tile
           value="true"
           v-for="(item, i) in items"
           :key="i"
+          exact
         >
           <v-list-tile-action>
             <v-icon light v-html="item.icon"></v-icon>
@@ -22,7 +23,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed>
+    <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" light></v-toolbar-side-icon>
       <v-btn
         icon
@@ -55,27 +56,18 @@
         <v-icon>menu</v-icon>
       </v-btn>
     </v-toolbar>
-    <main>
-      <v-container fluid>
-        <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <img src="/static/img/v.png" alt="Vuetify.js" class="mb-5">
-            <blockquote>
-              &#8220;First, solve the problem. Then, write the code.&#8221;
-              <footer>
-                <small>
-                  <em>&mdash;John Johnson</em>
-                </small>
-              </footer>
-            </blockquote>
-          </v-layout>
-        </v-slide-y-transition>
-      </v-container>
-    </main>
+    <v-content>
+      {{#router}}
+      <router-view></router-view>
+      {{else}}
+      <hello></hello>
+      {{/router}}
+    </v-content>
     <v-navigation-drawer
       temporary
       :right="right"
       v-model="rightDrawer"
+      fixed
     >
       <v-list>
         <v-list-tile @click="right = !right">
@@ -86,31 +78,64 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :fixed="fixed">
-      <span>&copy; 2017</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
+  {{#unless router}}
+  import Hello from '@/components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  {{/unless}}
+  import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   export default {
-    data () {
+    data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
       return {
+        cordova: Vue.cordova,
         clipped: false,
         drawer: true,
         fixed: false,
-        items: [
-          { icon: 'bubble_chart', title: 'Inspire' }
-        ],
+        items: [{
+          icon: 'bubble_chart',
+          title: 'Inspire'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+        }],
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: 'Vuetify.js'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }{{#unless router}},
+    components: {
+      Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    }{{/unless}},
+    created () {
+      var self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      this.cordova.on('deviceready', () => {
+        self.onDeviceReady(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    },
+    methods: {
+      onDeviceReady: function () {
+        // Handle the device ready event.
+        this.cordova.on('pause', this.onPause, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        this.cordova.on('resume', this.onResume, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        if (this.cordova.device.platform === 'Android') {
+          document.addEventListener('backbutton', this.onBackKeyDown, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      },
+      onPause () {
+        // Handle the pause lifecycle event.
+        console.log('pause'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      },
+      onResume () {
+        // Handle the resume lifecycle event.
+        // SetTimeout required for iOS.
+        setTimeout(function () {
+          console.log('resume'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        }, 0){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      },
+      onBackKeyDown () {
+        // Handle the back-button event on Android. By default it will exit the app.
+        navigator.app.exitApp(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       }
-    }
-  }
+    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>
-
-<style lang="stylus">
-  @import './stylus/main'
-</style>

@@ -15,7 +15,7 @@
     "cordova-build": "npm run build && cordova build",
     "browser": "npm run build && cordova run browser",
     "ios": "npm run build && cordova run ios",
-    "android": "npm run build && cordova run android --device"
+    "android": "npm run build && cordova run android --device",
     "android-vm": "npm run build && cordova run android"
   },
   "dependencies": {
@@ -25,7 +25,8 @@
     {{/router}}
     "vuetify": "^1.0.0",
     "vue-cordova": "^0.1.2",
-    "vue-head": "^2.0.12"
+    "vue-head": "^2.0.12",
+    "cordova-plugin-device": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -124,6 +125,7 @@
   ],
   "cordova": {
     "plugins": {
+      "cordova-plugin-device": {}
     },
     "platforms": [
     ]

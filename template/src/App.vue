@@ -39,13 +39,6 @@
       >
         <v-icon>web</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        light
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -84,14 +77,14 @@
 <script>
   {{#unless router}}
   import Hello from '@/components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
   {{/unless}}
+  import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   export default {
     data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
       return {
+        cordova: Vue.cordova,
         clipped: false,
         drawer: true,
-        fixed: false,
         items: [{
           icon: 'bubble_chart',
           title: 'Inspire'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
@@ -104,6 +97,37 @@
     }{{#unless router}},
     components: {
       Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-    }{{/unless}}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+    }{{/unless}},
+    created () {
+      var self = this{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      this.cordova.on('deviceready', () => {
+        self.onDeviceReady(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    },
+    methods: {
+      onDeviceReady: function () {
+        // Handle the device ready event.
+        this.cordova.on('pause', this.onPause, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        this.cordova.on('resume', this.onResume, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        if (this.cordova.device.platform === 'Android') {
+          document.addEventListener('backbutton', this.onBackKeyDown, false){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      },
+      onPause () {
+        // Handle the pause lifecycle event.
+        console.log('pause'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      },
+      onResume () {
+        // Handle the resume lifecycle event.
+        // SetTimeout required for iOS.
+        setTimeout(function () {
+          console.log('resume'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+        }, 0){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      },
+      onBackKeyDown () {
+        // Handle the back-button event on Android. By default it will exit the app.
+        navigator.app.exitApp(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      }
+    }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>

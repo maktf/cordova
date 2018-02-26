@@ -68,7 +68,29 @@ You can fork this repo to create your own boilerplate, and use it with `vue-cli`
 vue init username/repo my-project
 ```
 
-# Reminder about android package naming conventions
+## Reminder about android package naming conventions
 
 Use these [Naming conventions](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html) for reverse doamin name to prevent build failure.
 If you've already initialised your project this can be changed in `config.xml`.
+
+## For iPhone X
+
+[This thread](https://stackoverflow.com/questions/46232812/cordova-app-not-displaying-correctly-on-iphone-x-simulator) helps understanding the status bar changes made for iPhone X.
+
+It is recommended to install [cordova-plugin-statusbar](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-statusbar/), and add these configurations to your config.xml as required:
+
+```xml
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <platform name="android">
+      <preference name="StatusBarBackgroundColor" value="#005790" />
+  </platform>
+  <platform name="ios">
+      <preference name="StatusBarBackgroundColor" value="#1a78b4" />
+  </platform>
+```
+
+Android spec requires a darker color from your apps primary theme color, hence the different colors for the different platforms.
+
+## Android headercolor
+
+The android header-color is the color of the taskbar when minimising the app. This can be altered by installing [cordova-plugin-headercolor](https://github.com/tomloprod/cordova-plugin-headercolor).

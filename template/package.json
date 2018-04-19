@@ -114,7 +114,7 @@
     "webpack-merge": "^4.1.0",
     "uglify-es": "^3.0.25",
     "uglifyjs-webpack-plugin": "^1.2.3",
-    "webpack-cli": "^2.0.12",
+    "webpack-cli": "^2.0.12"
   },
   "engines": {
     "node": ">= 4.0.0",

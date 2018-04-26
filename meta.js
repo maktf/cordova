@@ -12,12 +12,14 @@ module.exports = {
     "name": {
       "type": "string",
       "required": true,
-      "message": "Project name"
+      "message": "Project name",
+      "default": "Vuetify Cordova"
     },
     "reverseDomain": {
       "type": "string",
       "required": true,
-      "message": "Project reverse domain name (e.g. io.cordova.hellocordova)"
+      "message": "Project reverse domain name (e.g. io.cordova.hellocordova)",
+      "default": "io.test.vuetify"
     },
     "short_name": {
       "type": "string",
@@ -28,7 +30,7 @@ module.exports = {
       "type": "string",
       "required": false,
       "message": "Project description",
-      "default": "A Vue.js project"
+      "default": "A Vuetify project running in Cordova"
     },
     "author": {
       "type": "string",

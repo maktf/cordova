@@ -26,6 +26,12 @@ $ npm run ios
 
 If port 8080 is already in use on your machine you must change the port number in `/config/index.js`. Otherwise `npm run dev` will fail.
 
+### Storing icons locally
+
+If you want your icons to be present when the user starts the app offline for the first time, follow the steps in [this stackoverflow thread](https://stackoverflow.com/questions/37270835/how-to-host-material-icons-offline).
+
+This is not necessary if your users load the app while online, because the icons will then be cached and will not need to be loaded again even when the user goes offline.
+
 ## What's Included
 
 * Service Worker precaching of application shell + static assets (prod)

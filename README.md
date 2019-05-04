@@ -101,3 +101,4 @@ Android spec requires a darker color from your apps primary theme color, hence t
 
 The android header-color is the color of the taskbar when minimising the app. This can be altered by installing [cordova-plugin-headercolor](https://github.com/tomloprod/cordova-plugin-headercolor).
 try hard
+final test
